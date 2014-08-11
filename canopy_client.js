@@ -910,9 +910,6 @@ function CanopyClient(origSettings) {
                 return;
             }
             var data = JSON.parse(XMLHttpRequest.responseText);
-            console.log(data);
-            console.log(data['result']);
-            console.log(data['error_type']);
             if (data['result'] == "error") {
                 if (params.onError)
                     params.onError(data['error_type']);
@@ -1356,8 +1353,6 @@ function CanopyClient(origSettings) {
                 crossDomain: true
             })
             .done(function(data, textStatus, jqXHR) {
-                console.log("Done fetching");
-                console.log(params.onSuccess);
                 if (params.onSuccess)
                     params.onSuccess(data);
             })
@@ -1452,7 +1447,6 @@ function CanopyClient(origSettings) {
      */
     function CreateSensorInstance(device, sddl, value) {
         /* TODO: verify validity of value */
-        console.log("Creating sensor instance: ", sddl.name(), value)
         return {
             instance: new CanopySensorInstance(device, sddl, value),
             error: null
